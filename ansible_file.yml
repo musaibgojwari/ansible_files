@@ -1,0 +1,16 @@
+---
+- name: Install Pip and Boto3
+  hosts: all  # Replace with your target hosts or group
+  become: yes
+
+  tasks:
+    - name: Install pip
+      apt:
+        name: python3-pip
+        state: present
+      when: ansible_distribution == 'Ubuntu'  # Adjust for other distributions if needed
+
+    - name: Install boto3
+      pip:
+        name: boto3
+        state: present
